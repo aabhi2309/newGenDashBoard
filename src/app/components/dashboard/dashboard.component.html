@@ -1,0 +1,142 @@
+
+
+
+<div class="sideBar">
+  <div class="sideNav-content">
+    <header>
+      <span><strong>.studio</strong></span>
+    </header>
+      <ul class="navList">
+        <li>
+          <i class="fa-solid fa-house"></i>
+         <span><strong>Overview</strong> </span> 
+        </li>
+        <li>
+          <i class="fa-solid fa-signal"></i>
+         <span><strong>Stats</strong> </span>
+        </li>
+        <li>
+          <i class="fa-solid fa-folder-open"></i>
+         <span><strong>Projects</strong></span>
+        </li>
+        <li>
+          <i class="fa-brands fa-rocketchat"></i>
+         <span><strong>Chats</strong></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-calendar-days"></i>
+         <span><strong>Calendar</strong></span>
+        </li>
+        
+      </ul>
+  
+  
+  
+    <footer>
+      <ul class="navList">
+        <li>
+          <i class="fa-solid fa-gear"></i>
+         <span><strong>Settings</strong></span> 
+        </li>
+        <li>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+         <span><strong>Log out</strong></span>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</div>
+<div class="mainContent">
+  <div class="container">
+    <div class="navBar">
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search</span>
+      </div>
+      <div class="loginInfo">
+        <i class="fa-solid fa-circle-question"></i>
+        <i class="fa-solid fa-bell"></i>
+        <span><strong>Lolashvilli</strong> </span>
+        <i class="fa-solid fa-chevron-down"></i>
+        <i class="fa-solid fa-circle-user fa-2xl"></i>
+      </div>
+    </div>
+    <div class="cardContent">
+      <header>
+        <div class="heading">
+          <span><strong>Projects</strong></span>
+        </div>
+        <div class="day">
+          <span>This Week</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </header>
+      <div class="content">
+        <div class="column">
+          <div class="header">
+            <div class="name"><strong>TODO</strong></div>
+            <div class="count">{{newTodo.length}}</div>
+          </div>          
+          <button class="btn btn-secondary" (click)="addTodo()" >+</button> 
+  
+          <div class="body" 
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="newTodo"
+          [cdkDropListConnectedTo]="[inProgressList]"
+          (cdkDropListDropped)="drop($event)">
+            <div class="todoCard" *ngFor="let item of newTodo" cdkDrag>
+              <div class="todoTitle">{{ item.title }}</div>
+              <div class="todoBody">{{ item.description }}</div>
+              <div class="priority">
+                Priority : <strong>{{ item.priority }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="header">
+            <div class="name"><strong>In Progress</strong></div>
+            <div class="count">{{inProgressTodo.length}}</div>
+          </div>
+          <button class="btn btn-secondary">+</button>
+          <div class="body"
+          cdkDropList
+          #inProgressList="cdkDropList"
+          [cdkDropListData]="inProgressTodo"
+          [cdkDropListConnectedTo]="[doneList]"
+          (cdkDropListDropped)="drop($event)">
+            <div class="todoCard" *ngFor="let item of inProgressTodo" cdkDrag>
+              <div class="todoTitle">{{ item.title }}</div>
+              <div class="todoBody">{{ item.description }}</div>
+              <div class="priority">
+                Priority : <strong>{{ item.priority }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="header">
+            <div class="name"><strong>Completed</strong></div>
+            <div class="count">{{completedTodo.length}}</div>
+          </div>
+          <button class="btn btn-secondary">+</button>
+          <div class="body"
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="completedTodo"
+          [cdkDropListConnectedTo]="[todoList]"
+          (cdkDropListDropped)="drop($event)">
+            <div class="todoCard" *ngFor="let item of completedTodo" cdkDrag>
+              <div class="todoTitle">{{ item.title }}</div>
+              <div class="todoBody">{{ item.description }}</div>
+              <div class="priority">
+                Priority : <strong>{{ item.priority }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

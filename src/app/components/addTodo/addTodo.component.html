@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="content">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control"
+          formControlName="title"
+          placeholder="enter the Title" />
+        <span *ngIf="todoForm.get('title').touched &&
+          todoForm.get('title').invalid">
+          <span style="color: red"
+            *ngIf="todoForm.get('title').hasError('required')">
+            <br />
+            Please Enter the Title
+          </span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control"
+          formControlName="description"
+          placeholder="enter the description" />
+        <span *ngIf="todoForm.get('description').touched &&
+          todoForm.get('description').invalid">
+          <span style="color: red"
+            *ngIf="todoForm.get('description').hasError('required')">
+            <br />
+            Please Enter the description
+          </span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select class="form-control"
+          formControlName="priority"
+          placeholder="enter the description">
+          <option value="average">average</option>
+          <option value="high">high</option>
+          <option value="critical">critical</option></select>
+        <span *ngIf="todoForm.get('priority').touched &&
+          todoForm.get('priority').invalid">
+          <span style="color: red"
+            *ngIf="todoForm.get('priority').hasError('required')">
+            <br />
+            Please select the Priority
+          </span>
+        </span>
+      </div>
+  
+  <div class="form-group">
+    <button type="reset" class="btn btn-secondary"
+    data-dismiss="modal">
+    Reset
+  </button>
+  <button type="submit" class="btn btn-success"
+    [disabled]="!todoForm.valid">
+    Submit
+  </button>
+  </div>
+  
+
+  
+    </form>
+  </div>
+  
+</div>

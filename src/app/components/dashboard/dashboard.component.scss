@@ -1,0 +1,104 @@
+.sideBar{
+    position: fixed;
+    left: 0;
+    width: 20vw;
+    background-color: white;
+    height: 100vh;
+    border-right: 1px solid rgb(209, 203, 203);
+    .sideNav-content{
+      padding: 30px 50px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .sideNav-content>header{
+      font-size: x-large;
+    }
+    
+    .navList{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-top: 9vh;
+      :nth-child(n){
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+      
+    }
+    footer{
+      margin-top: 25vh;
+    }
+  }
+  .mainContent{
+    position: fixed;
+    right: 0;
+    width: 80vw;
+    background-color: rgb(251, 251, 251);
+    height: 100vh;
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      .navBar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 45px;
+        .search,.loginInfo{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          :nth-child(n){
+            margin-right: 10px;
+          }
+        }
+      }
+      .cardContent>header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 45px;
+        :nth-child(n){
+          margin-right: 10px;
+        }
+      }
+      .cardContent>header>.heading{
+        font-size: xx-large;
+      }
+      .content{
+        display: flex;
+        .column{
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          flex-basis: 0; // to force the columns to all be the same size, regardless of content
+          height: 100vh;
+          margin: 0px 20px;
+          padding: 25px;
+          border-radius: 4px;
+          background-color: rgb(232, 240, 242);
+          &:not(:first-child) {
+              margin-left: 0;
+          }
+        }.header{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        }
+        .body{
+          .todoCard{
+            margin-top: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+          }.todoBody,.priority{
+            font-size: small;
+            color: grey;
+          }
+        }
+      }
+  }
+  }
